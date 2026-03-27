@@ -14,7 +14,7 @@
 VPS 上装好 Docker 后，运行：
 
 ```bash
-git clone https://github.com/bwwq/Rulesmith.git && cd Rulesmith && docker compose up -d --build
+git clone https://github.com/bwwq/Rulesmith.git && cd Rulesmith && chmod +x deploy.sh && ./deploy.sh
 ```
 
 完成后访问 `http://你的IP` 即可使用。

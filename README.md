@@ -11,10 +11,10 @@
 
 ## 一键部署
 
-VPS 上装好 Docker 后，运行：
+VPS 上装好 Docker，将本项目放到服务器后运行：
 
 ```bash
-git clone https://github.com/bwwq/Rulesmith.git && cd Rulesmith && chmod +x deploy.sh && ./deploy.sh
+./deploy.sh
 ```
 
 完成后访问 `http://你的IP` 即可使用。

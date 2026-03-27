@@ -3,17 +3,17 @@ FROM node:18-alpine AS frontend-build
 
 WORKDIR /app/frontend
 
-# Because your frontend folder might not have a package.json strictly generated yet 
-# (if our init script hangs), we will just copy whatever we have and rebuild.
-# But for standard operation, we install deps first:
 COPY frontend/package.json ./
-# Don't fail if package-lock is missing
-COPY frontend/package-lock.json* ./
+# Intentionally NOT copying package-lock.json here.
+# Tailwind CSS v4 uses platform-specific native bindings (@tailwindcss/oxide).
+# A lock file generated on Windows/Mac will pull wrong binaries for Alpine Linux.
+# A fresh `npm install` ensures correct native bindings for this container's platform.
 RUN npm install
 
 # Copy all source files and build
 COPY frontend/ ./
-RUN npm run build
+# Remove any accidentally copied lock/node_modules from host to avoid conflicts
+RUN rm -rf node_modules/package-lock.json 2>/dev/null; npm install && npm run build
 
 # Stage 2: Setup the backend Node service and serve frontend
 FROM node:18-alpine

@@ -11,10 +11,10 @@
 
 ## 一键部署
 
-VPS 上装好 Docker，将本项目放到服务器后运行：
+VPS 上装好 Docker 和 Git，然后运行：
 
 ```bash
-./deploy.sh
+curl -fsSL https://raw.githubusercontent.com/bwwq/Rulesmith/main/deploy.sh | bash
 ```
 
 完成后访问 `http://你的IP` 即可使用。

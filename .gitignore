@@ -3,3 +3,9 @@ dist/
 .env
 .DS_Store
 .vscode/
+tmp_backup/
+# root-level junk from failed npx init
+/package.json
+/package-lock.json
+/src/
+示例前端.jsx

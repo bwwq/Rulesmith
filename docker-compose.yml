@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  palette-app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: trpg-palette-sync
+    ports:
+      # 本地环境将内部 3001 端口映射至外部 80 端口（如果您需套Nginx等，可改成 8080:3001）
+      - "80:3001"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    # 限制下日志文件大小以免长期运行撑满 VPS
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

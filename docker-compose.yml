@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: trpg-palette-sync
     ports:
-      # 本地环境将内部 3001 端口映射至外部 3001 端口以防 80 端口被 Nginx 等占用
-      - "3001:3001"
+      # 本地环境将内部 3001 端口映射至外部 9766 端口
+      - "9766:3001"
     environment:
       - NODE_ENV=production
     restart: unless-stopped

@@ -1,5 +1,5 @@
 # Stage 1: Build the frontend application using Vite
-FROM node:18-alpine AS frontend-build
+FROM node:20-alpine AS frontend-build
 
 WORKDIR /app/frontend
 
@@ -16,7 +16,7 @@ COPY frontend/ ./
 RUN rm -rf node_modules/package-lock.json 2>/dev/null; npm install && npm run build
 
 # Stage 2: Setup the backend Node service and serve frontend
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app/backend
 
